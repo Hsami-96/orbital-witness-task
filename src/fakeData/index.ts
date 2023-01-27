@@ -1,4 +1,6 @@
-[
+
+const fetchTitlesData = () => {
+  const titlesData = [
     {
       "Title Number": "243751",
       "Property Address": "31-35 Kirby Street, London, EC1N 8TE",
@@ -119,3 +121,13 @@
       "Y": 51.51992937
     }
    ]
+
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      const apiResultsData = titlesData
+      resolve(apiResultsData)
+    }, 500)
+  })
+}
+
+export default fetchTitlesData
