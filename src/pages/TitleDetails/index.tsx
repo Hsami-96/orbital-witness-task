@@ -2,7 +2,7 @@ import React from 'react'
 
 const TitleDetailsPage = () => {
   return (
-    <div>TitleDetailsPage</div>
+    <div className="container"></div>
   )
 }
 
