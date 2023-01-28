@@ -1,8 +1,11 @@
 import React from 'react'
+import Titles from '../../components/Titles/Titles'
 
 const TitlesPage = () => {
   return (
-    <div className="container"></div>
+    <div className="container">
+        <Titles/>
+    </div>
   )
 }
 
