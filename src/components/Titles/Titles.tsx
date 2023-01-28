@@ -60,6 +60,11 @@ const Titles = () => {
       search: '?page=' + page
     })
   }
+
+  const goToTitle = (titleNumber: number) => {
+    let path = `title/${titleNumber}`; 
+    navigate(path);
+  }
   
   return (
     <>
@@ -71,7 +76,7 @@ const Titles = () => {
       <div className="titlesContainer">
         {
          ( titlesResults && titlesResults.length > 0) ? (
-            <TableRenderer titleResults={titlesResults} setPage={setPage} currentPage={currentPage ?? 0}/>
+            <TableRenderer titleResults={titlesResults} setPage={setPage} currentPage={currentPage ?? 0} navigateTo={goToTitle}/>
          ) :
          <h1>No Titles to render...</h1>
         }

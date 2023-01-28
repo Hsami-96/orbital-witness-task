@@ -4,9 +4,10 @@ import { Title } from "../../../models/Title";
 interface TableRendererProps {
   titleResults: Title[]
   setPage: (page: number) => void
+  navigateTo: (titleNumber: number) => void
   currentPage: number
 }
-const TableRenderer = ({ titleResults, setPage, currentPage }: TableRendererProps) => {
+const TableRenderer = ({ titleResults, setPage, currentPage, navigateTo }: TableRendererProps) => {
   const columns: GridColDef[] = [
     { field: "titleNumber", headerName: "Title Number", flex: 1 },
     { field: "tenure", headerName: "Tenure", flex: 1 },
@@ -37,6 +38,7 @@ const TableRenderer = ({ titleResults, setPage, currentPage }: TableRendererProp
         rowsPerPageOptions={[5]}
         disableColumnMenu
         onPageChange={(page) => setPage(page)}
+        onRowClick={(title) => navigateTo(title.row.titleNumber)}
       />
     </>
   );
