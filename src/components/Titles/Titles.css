@@ -2,3 +2,8 @@
     height: 300px;
     width: 30%;
 }
+
+.loaderIcon {
+  display: flex;
+  justify-content: center;
+}

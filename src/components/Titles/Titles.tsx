@@ -1,55 +1,60 @@
-import { Typography } from '@mui/material';
+import { CircularProgress, Typography } from '@mui/material';
 import { DataGrid, GridColDef } from '@mui/x-data-grid'
+import { useEffect, useState } from 'react';
+import { fetchTitles } from '../../data/dataFetcher';
+import { Title } from '../../models/Title';
+import TableRenderer from '../common/TableRenderer/TableRenderer';
 import './Titles.css'
-const titlesData = [
-  {
-    titleNumber: "NGL931799",
-    propertyAddress: "Lower Ground Floor, 36-38 Hatton Garden, London (EC1N 8EB)",
-    tenure: "Leasehold",
-    xCoordinate: -0.108098777,
-    yCoordinate: 51.5201911
-  },
-  {
-    titleNumber: "BB15891",
-    propertyAddress: "Lower Ground Floor, 36-38 Hatton Garden, London (EC1N 8EB)",
-    tenure: "Leasehold",
-    xCoordinate: -0.108098777,
-    yCoordinate: 51.5201911
-  },
-  {
-    titleNumber: "AGL250417",
-    propertyAddress: "Lower Ground Floor, 36-38 Hatton Garden, London (EC1N 8EB)",
-    tenure: "Leasehold",
-    xCoordinate: -0.108098777,
-    yCoordinate: 51.5201911
-  },
-  {
-    titleNumber: "LN137710",
-    propertyAddress: "Lower Ground Floor, 36-38 Hatton Garden, London (EC1N 8EB)",
-    tenure: "Leasehold",
-    xCoordinate: -0.108098777,
-    yCoordinate: 51.5201911
-  },
- ]
+
 const Titles = () => {
-  const columns: GridColDef[] = [
-    { field: 'titleNumber', headerName: 'Title Number', flex: 1 },
-    { field: 'tenure', headerName: 'Tenure', flex: 1 },
-  ];
+  const [loader, setLoader] = useState(true)
+  const [error, setError] = useState('')
+  const [titlesResults, setTitleResults] = useState<Title[]>([])
+  
+  const getData = async () => {
+    try {
+      setLoader(true)
+      const resultData = await fetchTitles();
+      setTitleResults(resultData)
+    } catch (e) {
+      if (typeof e === "string") {
+        setError(e.toUpperCase())
+      } 
+      else if (e instanceof Error) {
+        setError(e.message)
+      }
+    }
+    finally {
+      setLoader(false)
+    }
+  }
+
+  useEffect(() => {
+    getData()
+  }, [])
+  
+  const renderLoader = () => {
+    return (
+      <div className="loaderIcon"><CircularProgress/></div>
+    )
+  }
   
   return (
     <>
-    <Typography>All Titles</Typography>
-     <div className="titlesContainer">
-      <DataGrid
-        getRowId={(row) => row.titleNumber}
-        rows={titlesData}
-        columns={columns}
-        pageSize={5}
-        rowsPerPageOptions={[5]}
-        disableColumnMenu
-      />
-    </div>
+    {
+      loader ? (renderLoader()) :
+      <>
+      <Typography>All Titles</Typography>
+      <div className="titlesContainer">
+        {
+         ( titlesResults && titlesResults.length > 0) ? (
+            <TableRenderer titleResults={titlesResults}/>
+         ) :
+         <h1>No Titles to render...</h1>
+        }
+      </div>
+      </>
+    }
     </>
    
   )

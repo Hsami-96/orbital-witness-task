@@ -11,10 +11,12 @@ const result: Title[] = [{
     yCoordinate: 51.5201911
 }]
 
-test('should render container div', () => { 
+test('should render container div', async () => { 
     const {container} = render(<Titles/>)
-    const titleContainer = container.getElementsByClassName('titlesContainer')
+    await waitFor(() => {
+      const titleContainer = container.getElementsByClassName('titlesContainer')
     expect(titleContainer.length).toBe(1)
+    })
 })
 
 test('renders titles details', async () => {
@@ -30,6 +32,19 @@ test('renders titles details', async () => {
       expect(resultTitle).toBeInTheDocument();
     });
   });
-  
+
+test('renders error', async () => {
+  const mockTitlesData = jest.mocked(fetchTitles)
+  mockTitlesData.mockImplementationOnce(() => {
+    throw new Error('404');
+  });
+
+  render(<Titles />);
+
+  await waitFor(() => {
+    const errorElement = screen.getByText(/Error/i);
+    expect(errorElement).toBeInTheDocument();
+  });
+});
 
 export {}

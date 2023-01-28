@@ -1,8 +1,10 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import App from './App';
 
 
-test('renders titles component page by default', () => {
+test('renders titles component page by default', async () => {
   render(<App/>)
-  expect(screen.getByText(/All Titles/i)).toBeInTheDocument()
+  await waitFor(() => {
+    expect(screen.getByText(/All Titles/i)).toBeInTheDocument()
+  })
 });
