@@ -12,6 +12,12 @@ export const fetchTitles = async () => {
     return titlesData
 }
 
-export const fetchTitle = async () => {
-    
+export const fetchTitle = async (titleNumber: string) => {
+    const results = await fetchTitlesData() as any[]
+    let titleData : Title = {propertyAddress: '', tenure: '', titleNumber: '', xCoordinate: 0, yCoordinate: 0 }
+    if(results) {
+        titleData = results.find(x => x['Title Number'] === titleNumber) ?? null 
+    }
+
+    return titleData
 }

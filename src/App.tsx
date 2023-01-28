@@ -1,19 +1,15 @@
-import './App.css';
 import {
-  BrowserRouter,
-  Routes,
-  Route
+  Route, Routes
 } from "react-router-dom";
-import TitlesPage from './pages/Titles';
+import './App.css';
 import TitleDetailsPage from './pages/TitleDetails';
+import TitlesPage from './pages/Titles';
 function App() {
   return (
-    <BrowserRouter>
       <Routes>
         <Route path="/" element={<TitlesPage />} />
         <Route path="/title/:number" element={<TitleDetailsPage />} />
       </Routes>
-    </BrowserRouter>
   );
 }
 

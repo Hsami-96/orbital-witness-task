@@ -1,8 +1,16 @@
 import { render, waitFor, within, screen } from "@testing-library/react"
+import { BrowserRouter, Router } from "react-router-dom"
 import { fetchTitles } from "../../data/dataFetcher"
 import { Title } from "../../models/Title"
 import Titles from "./Titles"
 jest.mock('../../data/dataFetcher')
+const mockedUsedNavigate = jest.fn();
+
+jest.mock('react-router-dom', () => ({
+   ...jest.requireActual('react-router-dom') as any,
+  useNavigate: () => mockedUsedNavigate,
+}));
+
 const result: Title[] = [{
     titleNumber: "NGL931799",
     propertyAddress: "Lower Ground Floor, 36-38 Hatton Garden, London (EC1N 8EB)",

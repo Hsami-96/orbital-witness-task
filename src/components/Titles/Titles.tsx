@@ -7,7 +7,7 @@ import TableRenderer from '../common/TableRenderer/TableRenderer';
 import './Titles.css';
 
 const Titles = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
   const [loader, setLoader] = useState(true)
   const [error, setError] = useState('')
   const [titlesResults, setTitleResults] = useState<Title[]>([])
@@ -76,7 +76,7 @@ const Titles = () => {
       <div className="titlesContainer">
         {
          ( titlesResults && titlesResults.length > 0) ? (
-            <TableRenderer titleResults={titlesResults} setPage={setPage} currentPage={currentPage ?? 0} navigateTo={goToTitle}/>
+            <TableRenderer titleResults={titlesResults} currentPage={currentPage ?? 0} setPage={setPage} navigateTo={goToTitle}/>
          ) :
          <h1>No Titles to render...</h1>
         }

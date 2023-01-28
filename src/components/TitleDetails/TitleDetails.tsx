@@ -2,7 +2,7 @@ import React from 'react'
 
 const TitleDetails = () => {
   return (
-    <div>TitleDetails</div>
+    <div className='titleDetailsContainer'>TitleDetails</div>
   )
 }
 

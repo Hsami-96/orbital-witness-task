@@ -8,6 +8,13 @@ const result = [{
     "Tenure": "Leasehold",
     "X": -0.108098777,
     "Y": 51.5201911
+},
+{
+    "Title Number": "NGL932799",
+    "Property Address": "Lower Ground Floor, 36-38 Hatton Garden, London (EC1N 8EB)",
+    "Tenure": "Leasehold",
+    "X": -0.108098777,
+    "Y": 51.5201911
 }]
 const mockFakeAPI = () => {
  const mockTitlesData = jest.mocked(fetchTitlesData)
@@ -29,13 +36,6 @@ test('response contains a titles array', async () => {
 })
 
 test('response returns title requested for', async () => {
-    const result = {
-        "Title Number": "NGL931799",
-        "Property Address": "Lower Ground Floor, 36-38 Hatton Garden, London (EC1N 8EB)",
-        "Tenure": "Leasehold",
-        "X": -0.108098777,
-        "Y": 51.5201911
-    }
     const mockFakeAPI = () => {
         const mockTitleData = jest.mocked(fetchTitlesData)
         mockTitleData.mockImplementationOnce(() => {
@@ -43,7 +43,8 @@ test('response returns title requested for', async () => {
     })
     }
 
-    const resultData = await fetchTitle();
+    mockFakeAPI()
+    const resultData = await fetchTitle(result[0]["Title Number"]);
     expect(resultData).toHaveProperty('Title Number', 'NGL931799')
 })
 
