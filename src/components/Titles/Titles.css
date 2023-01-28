@@ -1,9 +1,40 @@
 .titlesContainer {
-    height: 300px;
-    width: 30%;
+    height: 350px;
 }
 
 .loaderIcon {
   display: flex;
   justify-content: center;
+}
+
+@media only screen and (min-width: 1025px) {
+  .titlesContainer {
+    width: 30%;
+  }
+}
+
+@media only screen and (max-width: 1025px) {
+  .titlesContainer {
+    width: 40%;
+  }
+}
+
+@media only screen and (max-width: 769px) {
+  .titlesContainer {
+    width: 50%;
+  }
+}
+
+
+@media only screen and (max-width: 481px) {
+  .titlesContainer {
+    width: 70%;
+  }
+}
+
+
+@media only screen and (max-width: 320px) {
+  .titlesContainer {
+    width: 80%;
+  }
 }
