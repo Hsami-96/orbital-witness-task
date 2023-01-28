@@ -38,11 +38,21 @@ const Titles = () => {
       <div className="loaderIcon"><CircularProgress/></div>
     )
   }
+
+  const renderError = () => {
+    return (
+      <div className="errorContainer">
+        <h1>Error</h1>
+        <h2>Message: {error}</h2>
+      </div>
+    )
+  }
   
   return (
     <>
     {
       loader ? (renderLoader()) :
+      error ? (renderError()) :
       <>
       <Typography>All Titles</Typography>
       <div className="titlesContainer">
