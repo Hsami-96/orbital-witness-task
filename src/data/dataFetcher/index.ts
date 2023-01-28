@@ -11,3 +11,7 @@ export const fetchTitles = async () => {
 
     return titlesData
 }
+
+export const fetchTitle = async () => {
+    
+}
