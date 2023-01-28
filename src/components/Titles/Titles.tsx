@@ -1,15 +1,20 @@
 import { CircularProgress, Typography } from '@mui/material';
-import { DataGrid, GridColDef } from '@mui/x-data-grid'
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { fetchTitles } from '../../data/dataFetcher';
 import { Title } from '../../models/Title';
 import TableRenderer from '../common/TableRenderer/TableRenderer';
-import './Titles.css'
+import './Titles.css';
 
 const Titles = () => {
+  const navigate = useNavigate();
   const [loader, setLoader] = useState(true)
   const [error, setError] = useState('')
   const [titlesResults, setTitleResults] = useState<Title[]>([])
+
+  let search = window.location.search;
+  let params = new URLSearchParams(search);
+  const [currentPage, setCurrentPage] = useState(params.get('page') ? parseInt("" + params.get('page')): 0)
   
   const getData = async () => {
     try {
@@ -47,6 +52,14 @@ const Titles = () => {
       </div>
     )
   }
+
+  const setPage = (page: number) => {
+    setCurrentPage(page)
+    navigate({
+      pathname: '/',
+      search: '?page=' + page
+    })
+  }
   
   return (
     <>
@@ -58,7 +71,7 @@ const Titles = () => {
       <div className="titlesContainer">
         {
          ( titlesResults && titlesResults.length > 0) ? (
-            <TableRenderer titleResults={titlesResults}/>
+            <TableRenderer titleResults={titlesResults} setPage={setPage} currentPage={currentPage ?? 0}/>
          ) :
          <h1>No Titles to render...</h1>
         }
