@@ -13,7 +13,8 @@ const result: Title[] = [{
 
 test('should render container div', () => { 
     const {container} = render(<Titles/>)
-    expect(container.firstChild).toHaveClass('titlesContainer')
+    const titleContainer = container.getElementsByClassName('titlesContainer')
+    expect(titleContainer.length).toBe(1)
 })
 
 test('renders titles details', async () => {
