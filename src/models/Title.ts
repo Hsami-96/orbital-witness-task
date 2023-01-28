@@ -3,5 +3,5 @@ export interface Title {
     propertyAddress: string
     tenure: string
     xCoordinate: number
-    YCoordinate: number
+    yCoordinate: number
 }

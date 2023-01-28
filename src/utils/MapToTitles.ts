@@ -14,5 +14,5 @@ const singleTitleMap = (title: any): Title => ({
     propertyAddress: title["Property Address"] ?? '',
     tenure: title.Tenure ?? '',
     xCoordinate: title.X ?? 0,
-    YCoordinate: title.Y ?? 0,
+    yCoordinate: title.Y ?? 0,
 })
