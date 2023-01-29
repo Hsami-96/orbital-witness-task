@@ -1,5 +1,14 @@
 # Getting Started with Create React App
 
+To start the App:
+
+- clone repo locally
+- run `npm install` to install all node modules required
+- run `npm test` to run all the unit tests
+- run `npm start` to run the application
+
+Check out ideas file for more features that could be added (if i had more time)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
