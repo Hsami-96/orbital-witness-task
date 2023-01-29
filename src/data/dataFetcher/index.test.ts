@@ -45,7 +45,7 @@ test('response returns title requested for', async () => {
 
     mockFakeAPI()
     const resultData = await fetchTitle(result[0]["Title Number"]);
-    expect(resultData).toHaveProperty('Title Number', 'NGL931799')
+    expect(resultData).toHaveProperty('titleNumber', 'NGL931799')
 })
 
 export {}
