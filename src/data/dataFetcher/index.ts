@@ -1,5 +1,5 @@
 import { Title } from "../../models/Title"
-import { mapToTitlesData } from "../../utils/MapToTitles"
+import { mapToTitlesData, singleTitleMap } from "../../utils/MapToTitles"
 import fetchTitlesData from "../fakeData"
 
 export const fetchTitles = async () => {
@@ -16,7 +16,7 @@ export const fetchTitle = async (titleNumber: string) => {
     const results = await fetchTitlesData() as any[]
     let titleData : Title = {propertyAddress: '', tenure: '', titleNumber: '', xCoordinate: 0, yCoordinate: 0 }
     if(results) {
-        titleData = results.find(x => x['Title Number'] === titleNumber) ?? null 
+        titleData = singleTitleMap(results.find(x => x['Title Number'] === titleNumber)) ?? null 
     }
 
     return titleData

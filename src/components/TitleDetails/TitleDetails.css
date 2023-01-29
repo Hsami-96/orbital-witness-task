@@ -1,0 +1,112 @@
+.titleDetailsContainer {
+    width: 100%;
+    display: flex;
+    flex: 1;
+    justify-content: space-evenly;
+    margin-top: 2%;
+}
+
+.detailsContainer {
+    display: flex;
+    flex: 0.3;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.mapContainer {
+    display: flex;
+    flex: 0.3;
+    width: 100%;
+}
+.mapRender {
+    width: 100%;
+}
+.titleNumber {
+    font-weight: 600;
+}
+
+.tenure {
+    border-radius: 25px;
+    font-weight: 100;
+    color: white;
+    padding: 5px;
+    width: 20%;
+    text-align: center;
+    margin-left: 2%;
+}
+
+.freehold {
+    background: #73AD21;
+}
+
+.leasehold {
+    background: #21cec2;
+}
+
+.backBtn {
+    cursor: pointer;
+}
+  
+@media only screen and (max-width: 1025px) {
+    .titleDetailsContainer {
+        flex-direction: column;
+    }
+
+    .mapContainer {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 50%;
+        bottom: 0;
+    
+    } 
+
+  }
+
+  @media only screen and (max-width: 769px) {
+    .titleDetailsContainer {
+        flex-direction: column;
+    }
+
+    .mapContainer {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 60%;
+        bottom: 0;
+    
+    } 
+  }
+  
+  
+  @media only screen and (max-width: 481px) {
+    .titleDetailsContainer {
+        flex-direction: column;
+    }
+
+    .mapContainer {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 60%;
+        bottom: 0;
+    
+    } 
+  }
+  
+  
+  @media only screen and (max-width: 320px) {
+    .titleDetailsContainer {
+        flex-direction: column;
+    }
+
+    .mapContainer {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 70%;
+        bottom: 0;
+    
+    } 
+  }
+  

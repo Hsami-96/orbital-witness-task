@@ -9,7 +9,7 @@ export const mapToTitlesData = (data: any): Title[] => {
     return titles
 }
 
-const singleTitleMap = (title: any): Title => ({
+export const singleTitleMap = (title: any): Title => ({
     titleNumber: title["Title Number"] ?? '',
     propertyAddress: title["Property Address"] ?? '',
     tenure: title.Tenure ?? '',
